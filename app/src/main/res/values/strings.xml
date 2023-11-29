@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">GCC_APP_GRP10</string>
+    <string name="reg_title">Registration</string>
+    <string name="login_title">Login</string>
+    <string name="name_hint">Please enter your username</string>
+    <string name="name_label">Username</string>
+    <string name="email_hint">Please enter your email</string>
+    <string name="email_label">Email</string>
+    <string name="phone_hint">Please enter your phone number</string>
+    <string name="phone_label">Phone Number</string>
+    <string name="social_hint">Please enter your social media link</string>
+    <string name="social_label">Social Media Link</string>
+    <string name="bio_hint">Please enter your bio</string>
+    <string name="bio_label">Bio (optional)</string>
+    <string name="firstName_hint">Please enter your first name</string>
+    <string name="firstName_label">First Name</string>
+    <string name="password_hint">Please enter your password</string>
+    <string name="password_label">Password</string>
+    <string name="register_button">Register</string>
+    <string name="register_p_button">Register as a Participant</string>
+    <string name="register_c_button">Register as a Club</string>
+    <string name="register_a_button">Register as an Admin</string>
+    <string name="login_button">Login</string>
+    <string name="reg_prompt">No Account? Register below:</string>
+    <string name="role_label">Choose your role</string>
+    <string name="role_participant">Participant</string>
+    <string name="role_club">Club</string>
+    <string name="role_admin">Admin</string>
+    <string name="welcome">Welcome</string>
+</resources>

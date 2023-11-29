@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AdminWelcome">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Database.Interfaces.CanRegister">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Welcome Admin!"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+                <EditText
+                    android:id="@+id/addEventType"
+                    android:layout_width="300dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Please enter an event type"
+                    android:inputType="text" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_alignParentBottom="true">
+
+                    <Button
+                        android:id="@+id/AddEventTypeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onAddEventTypeButton"
+                        android:text="Add Event Type"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/editEventTypeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onEditEventTypeButton"
+                        android:text="Edit Event Type"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/deleteEventTypeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onDeleteEventTypeButton"
+                        android:text="Delete Event Type"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="User Management"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/deleteUser"
+                    android:layout_width="300dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Please enter a username"
+                    android:inputType="text" />
+
+                <RadioGroup
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/deleteParticipant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/role_participant" />
+
+                    <RadioButton
+                        android:id="@+id/deleteClub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/role_club" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/deleteUserButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Delete User"
+                    android:onClick="onDeleteUserButton"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>
