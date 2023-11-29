@@ -4,8 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.View;
+import android.view.WindowManager;
+import android.content.Intent;
+import android.view.animation.AnimationUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -19,128 +27,40 @@ import com.uottawa.SEG2105BC.gcc_app_grp10.Users.User;
 
 import static java.util.Objects.requireNonNull;
 
-public class MainActivity extends AppCompatActivity implements CanReceiveAUser {
-    EditText email;
-    EditText password;
-    RadioButton roleParticipant;
-    RadioButton roleClub;
-    RadioButton roleAdmin;
-    AuthenticationHandler authenticationHandler;
+public class MainActivity extends AppCompatActivity{
 
+    private static int SPLASH_SCREEN = 4000;
+
+    //Variables
+    Animation topAnimation, bottomAnimation;
+    ImageView image, logo;
+    TextView slogan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = findViewById(R.id.emailEditText);
-        password = findViewById(R.id.passwordEditText);
-        roleParticipant = findViewById(R.id.roleParticipant);
-        roleClub = findViewById(R.id.roleClub);
-        roleAdmin = findViewById(R.id.roleAdmin);
-        authenticationHandler=new AuthenticationHandler();
-    }
+        //Animations
+        topAnimation = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        bottomAnimation = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
-    public void toRegisterParticipantPageButton(View view){
-        //when go to register gets pressed, bring you to register page
-        Intent intent = new Intent(getApplicationContext(), ParticipantCanRegister.class);
-        startActivity(intent);
-    }
+        //Hooks
+        image = findViewById(R.id.eggLogo);
+        logo = findViewById(R.id.eggspeditionLogo);
+        slogan = findViewById(R.id.sloganLogo);
 
-    public void toRegisterClubPageButton(View view){
-        //when go to register gets pressed, bring you to register page
-        Intent intent = new Intent(getApplicationContext(), ClubCanRegister.class);
-        startActivity (intent);
-    }
+        image.setAnimation(topAnimation);
+        logo.setAnimation(topAnimation);
+        slogan.setAnimation(bottomAnimation);
 
-    public void toRegisterAdminPageButton(View view){
-        //when go to register gets pressed, bring you to register page
-        Intent intent = new Intent(getApplicationContext(), AdminCanRegister.class);
-        startActivity (intent);
-    }
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        }, SPLASH_SCREEN);
 
-    public void OnLoginButton(View view) {
-        System.out.println("button");
-        if(!validateInputs()){return;}
-        String role=checkRole();
-        //attempts to sign in to the users account
-        authenticationHandler.signIn(this,email.getText().toString().trim(),password.getText().toString().trim(),role,this,this);
-    }
-
-    /**
-     * Called by the DatabaseHandler once the users data has been loaded
-     * @param user the user data that was retrieved
-     */
-    @Override
-    public void onUserDataRetrieved(User user){
-        //notifies the user that the loading was successful
-        Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-        if (user.getClass().equals(Admin.class)) {
-            Intent intent = new Intent(getApplicationContext(), AdminWelcome.class);
-            startActivity(intent);
-        }
-        else if (user.getClass().equals(Club.class)) {
-
-            Intent intent = new Intent(getApplicationContext(), ClubWelcome.class);
-            intent.putExtra("firstName", user.getUsername());
-            intent.putExtra("role", user.getRole());
-            intent.putExtra("clubName", user.getUsername());
-            startActivity(intent);
-        }
-        else {
-            Intent intent = new Intent(getApplicationContext(), Welcome.class);
-            // Adds information to the intent for the welcome page to access
-            intent.putExtra("firstName", user.getUsername());
-            intent.putExtra("role", user.getRole());
-
-            System.out.println("going to next activity");
-            startActivity(intent);
-        }
-    }
-
-    /**
-     * called by the AuthenticationHandler if the authentication fails
-     */
-    public void onLoginAuthorisationFailure(){
-        Snackbar.make(findViewById(android.R.id.content), "No user exists with given role (or password is wrong)!", Snackbar.LENGTH_LONG).show();
-    }
-
-
-
-    /**
-     * called by the DatabaseHandler is the retrieval fails
-     */
-    @Override
-    public void onUserDatabaseFailure(){
-        Snackbar.make(findViewById(android.R.id.content), "Signing in user failed!", Snackbar.LENGTH_LONG).show();
-    }
-
-    private String checkRole(){
-        if (roleParticipant.isChecked()){
-            return "participant";
-        } else if (roleClub.isChecked()) {
-            return "club";
-        } else if (roleAdmin.isChecked()) {
-            return "admin";
-        }
-        else {
-            Toast.makeText(MainActivity.this, "Select a Role!", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-    }
-
-    private boolean validateInputs(){
-        if (email.getText().length() == 0){
-            Toast.makeText(MainActivity.this, "Enter an email!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (password.getText().length() == 0){
-            Toast.makeText(MainActivity.this, "Enter a password!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (!roleParticipant.isChecked()&&!roleClub.isChecked()&&!roleAdmin.isChecked()) {
-            Toast.makeText(MainActivity.this, "Select a role!", Toast.LENGTH_SHORT).show();
-        }
-        return true;
     }
 
 }

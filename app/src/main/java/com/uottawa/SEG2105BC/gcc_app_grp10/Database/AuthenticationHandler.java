@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.uottawa.SEG2105BC.gcc_app_grp10.Activities.MainActivity;
+import com.uottawa.SEG2105BC.gcc_app_grp10.Activities.Login;
 import com.uottawa.SEG2105BC.gcc_app_grp10.Database.Interfaces.CanRegister;
 import com.uottawa.SEG2105BC.gcc_app_grp10.Users.User;
 
@@ -91,7 +91,7 @@ public class AuthenticationHandler {
      * @param activity the current activity being displayed
      * @param context no clue honestly, might be the main thread
      */
-    public void signIn(MainActivity main, String email, String password, String role, final Activity activity, final Context context) {
+    public void signIn(Login main, String email, String password, String role, final Activity activity, final Context context) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, task -> {
                     if (task.isSuccessful()) {
@@ -104,7 +104,7 @@ public class AuthenticationHandler {
                 });
     }
 
-    private void onSignInAuthorised(MainActivity main,FirebaseUser fUser, String role){
+    private void onSignInAuthorised(Login main,FirebaseUser fUser, String role){
         //loads the users data from the database into a user instance
         databaseHandler.loadUserData(main,fUser.getUid(), role);
     }

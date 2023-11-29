@@ -30,7 +30,7 @@ public class PropertyType implements Serializable {
     /**
      * like all the other methods, SpecifiedProperty inherits this
      * and it still overrides it's equal method
-     * @param o
+     * @param
      * @return
      */
 //    @Override
