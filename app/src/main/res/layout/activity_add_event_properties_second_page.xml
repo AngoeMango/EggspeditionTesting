@@ -32,8 +32,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Add Event Fields"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textSize="40sp"
+                    android:textColor="@color/darkbrown"
+                    android:fontFamily="@font/bubblebobble"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -49,10 +50,17 @@
 
                 <Button
                     android:id="@+id/addEventFieldsButton"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onAddEventFieldsButton"
-                    android:text="Add Fields" />
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:onClick="OnRegisterButton"
+                    android:text="Select Event Type"
+                    app:backgroundTint="@color/orange"
+                    app:strokeWidth="3dp"
+                    app:strokeColor="@color/darkbrown"
+                    android:textColor="@color/eggwhite"
+                    android:fontFamily="@font/bubblebobble"/>
             </LinearLayout>
 
         </LinearLayout>

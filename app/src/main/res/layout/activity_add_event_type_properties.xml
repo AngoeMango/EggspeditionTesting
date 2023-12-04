@@ -33,8 +33,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Add Fields for Event Type"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textSize="40sp"
+                    android:textColor="@color/darkbrown"
+                    android:fontFamily="@font/bubblebobble"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -50,17 +51,31 @@
 
                 <Button
                     android:id="@+id/AddFieldButton"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onAddIndividualFieldButton"
-                    android:text="Add Field" />
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:onClick="OnRegisterButton"
+                    android:text="Add Field"
+                    app:backgroundTint="@color/orange"
+                    app:strokeWidth="3dp"
+                    app:strokeColor="@color/darkbrown"
+                    android:textColor="@color/eggwhite"
+                    android:fontFamily="@font/bubblebobble"/>
 
                 <Button
                     android:id="@+id/addFieldsButton"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onAddFieldsButton"
-                    android:text="Add Fields" />
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:onClick="OnRegisterButton"
+                    android:text="Add Fields"
+                    app:backgroundTint="@color/orange"
+                    app:strokeWidth="3dp"
+                    app:strokeColor="@color/darkbrown"
+                    android:textColor="@color/eggwhite"
+                    android:fontFamily="@font/bubblebobble"/>
             </LinearLayout>
 
         </LinearLayout>
