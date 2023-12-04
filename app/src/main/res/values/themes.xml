@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.GCC_APP_GRP10" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="android:windowBackground">@color/yellow2</item> -->
+        <item name="android:windowBackground">@color/yellow3</item> -->
     </style>
 
     <style name="Theme.GCC_APP_GRP10" parent="Base.Theme.GCC_APP_GRP10" />
